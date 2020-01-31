@@ -1,0 +1,21 @@
+.top-rated{
+    color: white;
+}
+.whole{
+    display: grid; 
+    grid-template-columns: 380px 380px 380px;
+  grid-template-rows: 540px 540px 540px ;
+  grid-column-gap: 50px;
+  grid-row-gap: 10px;   
+}
+.select1{
+    margin: 30px;
+    padding: 30px;
+    height: 400px;
+    width: 350px;
+    background-color: black;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    
+}

@@ -1,0 +1,39 @@
+body{
+    margin: 10px;
+    background-color: #1D1D1D;
+}
+.header-main{
+    height: 20%;
+    width: 100%;
+    background-color: black;
+    border: 3px solid #75c74e;
+    display: flex;
+    justify-content: space-between;
+    }
+    .btn-holder{
+    height: 50px;
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 20px 5px 20px;
+    }
+    .btn-holder button{
+        height: 30px;
+        width: 100px;
+        background-color: blue;
+        border: 2px solid springgreen;
+        border-radius: 5px;
+        color:springgreen;
+        font-weight: 900;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn-holder button:hover{
+        background-color: springgreen;
+        border: 2px solid blue;
+        color: blue;
+    }
+.user{
+    color: white;
+    text-align: center;
+    padding: 12px 0px 0px 40px;
+}
