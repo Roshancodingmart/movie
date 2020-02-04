@@ -29,7 +29,7 @@ export default class List extends Component {
   render() {
     return (
       <>
-      <h1 style={{color:'white'}}>Top rated Movies</h1>
+      <span className="genre">Top rated Movies</span>
         <div className="whole">
             {this.state.list.map((value, index) => {
               return (
@@ -37,16 +37,16 @@ export default class List extends Component {
                   
                   <div className="select1">
                     <div className="title">
-                      <h1>{value.title}</h1>
+                      <span className="heading">{value.title}</span>
                     </div>
                     <div className="desp">
                       <div className="rate">
-                          <p className="rating">Rating:  </p>
-                          <p style={{color:'black'}}>/</p>
-                          <p className="rating-n">{value.vote_average}/10</p>
+                          <span className="rating">Rating:  </span>
+                          <span style={{color:'black'}}>/</span>
+                          <span className="rating-n">{value.vote_average}/10</span>
                       </div>
-                      <h3>Overview</h3>
-                      <p>{value.overview}</p>
+                      <span className="overview">Overview</span>
+                      <span>{value.overview}</span>
             
                     </div>
                   </div>

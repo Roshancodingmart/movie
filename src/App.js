@@ -4,12 +4,10 @@ import Signup from "./signup";
 import Signin from "./signin";
 import Table from "./table";
 import Movie from "./movie";
-import "./header.css";
-import "./main.css";
-import "./signup.css";
-import "./signin.css";
-import "./table.css";
-const jwt = require("jsonwebtoken");
+import "./App.css";
+import cookie from "react-cookies";
+// const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 export default class App extends Component {
   constructor() {
     super();
@@ -22,8 +20,8 @@ export default class App extends Component {
   }
 
   componentWillMount = () => {
-    if (localStorage.getItem("token")) {
-      if (jwt.decode(localStorage.getItem("token")).email == "roshan@admin") {
+    if (localStorage.getItem("priority")) {
+      if (localStorage.getItem("priority") == "1") {
         this.setState({
           showTable: true
         });
@@ -50,7 +48,8 @@ export default class App extends Component {
     });
   };
   triggerLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("priority");
+    cookie.remove("token", { path: "/" });
     window.location.reload(false);
   };
   triggerDelete = () => {
@@ -61,13 +60,13 @@ export default class App extends Component {
   };
   render() {
     return (
-      <div>
+      <>
         <Header
           signup={this.triggerSignup}
           signin={this.triggerSignin}
           logout={this.triggerLogout}
         />
-        {!localStorage.getItem("token") && (
+        {!localStorage.getItem("priority") && (
           <div className="main">
             {this.state.showSignup && <Signup />}
             {this.state.showSignin && <Signin />}
@@ -76,8 +75,8 @@ export default class App extends Component {
         {this.state.showTable && (
           <Table delete={this.triggerDelete} show={this.state.show} />
         )}
-        {!this.state.showTable && localStorage.getItem("token") && <Movie />}
-      </div>
+        {!this.state.showTable && localStorage.getItem("priority") && <Movie />}
+      </>
     );
   }
 }

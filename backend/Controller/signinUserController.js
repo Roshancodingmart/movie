@@ -10,12 +10,12 @@ const signinUser = (req, res) => {
     `SELECT password FROM public.new WHERE email=$1`,
     [mail],
     (err, resp) => {
-      bcrypt.compare(pass, resp.rows[0].password, function(err, respo) {
+      bcrypt.compare(pass, resp.rows[0].password, function(error, respo) {
         if (respo) {
           conn.client.query(
             `SELECT * FROM public.new WHERE email=$1`,
             [mail],
-            (err, respon) => {
+            (erro, respon) => {
               var token = jwt.sign(
                 {
                   email: respon.rows[0].email,

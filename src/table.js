@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./table.css"
 import axios from "axios"
 const jwt = require("jsonwebtoken");
 
@@ -28,7 +29,9 @@ export default class Table extends Component {
   }
   deleteUser=async(event)=>{
     console.log(event.target.id)
-    let user ={mail:event.target.id}
+    let user ={mail:event.target.id,
+    name:event.target.name,
+  pass:event.target.value}
     await axios.post("http://localhost:3005/deleteUser", user).then(response=>{
       alert(response.data)
     })
@@ -37,7 +40,6 @@ export default class Table extends Component {
   render() {
     return (
       <>
-      <p>{this.props.show}</p>
          <div className="table-container">
           <table className="table">
             <thead>
@@ -56,19 +58,19 @@ export default class Table extends Component {
                 <td className="uemail">{value.email}</td>
                 <td className="uname">{value.name}</td>
                 <td className="upass">{value.password}</td>
-                <td className="ustatus"><button id={value.email} onClick={this.deleteUser}>X</button></td>
+                <td className="ustatus"><button id={value.email} name={value.name} value={value.password} onClick={this.deleteUser}>X</button></td>
               </tr>
               </tbody>)
             })}
             
-            <tfoot>
+            {/* <tfoot>
               <tr>
                 <th className="femail" />
                 <th className="name" />
                 <th className="pass" />
                 <th className="fstatus" />
               </tr>
-            </tfoot>
+            </tfoot> */}
           </table>
         </div>
       </>

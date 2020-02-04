@@ -58,16 +58,16 @@ export default class Movie extends Component {
       </div>
         {this.state.id && <div className="select">
             <div className="title">
-                <h1>{this.state.title}</h1>
+                <span className="heading">{this.state.title}</span>
                 
                 
             </div>
             <div className="desp">
-            <p className="rating">Rating: </p>
-            <p className="rating-n">{this.state.rating}/10</p>
-                <p className="duration">{this.state.runtime}hrs</p>
-            <h3>Overview</h3>
-                <p>{this.state.overview}</p>
+            <span className="rating">Rating: </span>
+            <span className="rating-n">{this.state.rating}/10</span>
+                <span className="duration">{this.state.runtime}hrs</span>
+            <span className="">Overview</span>
+                <span>{this.state.overview}</span>
                 {
                     this.state.genre&&
                     this.state.genre.map((value,index)=>{

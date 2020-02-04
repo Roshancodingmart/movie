@@ -1,43 +1,52 @@
 import React, { Component } from "react";
-const jwt = require("jsonwebtoken");
+import SimpleCrypto from "simple-crypto-js";
+import cookie from 'react-cookies'
+import "./header.css";
+// const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       show: false,
-      name:""
+      name: ""
     };
   }
-  componentWillMount=()=>{
-    if(localStorage.getItem("token")){
-      
+  componentWillMount = () => {
+    if (localStorage.getItem("priority")) {
+      var _secretKey = "goodmorningeveryone";
+      var simpleCrypto = new SimpleCrypto(_secretKey);
+      var token = cookie.load("token");
+      console.log("token",token)
+      var decipherText = simpleCrypto.decrypt(token);
+      // console.log()
       this.setState({
-        show:true,
-        name:(jwt.decode(localStorage.getItem("token")).name).toUpperCase()
-      })
-    }
-    else{
+        show: true,
+        name: jwt.decode(decipherText).name.toUpperCase()
+      });
+    } else {
       this.setState({
-        show:false
-      })
+        show: false
+      });
     }
-  }
-  componentWillReceiveProps=()=>{
-if(localStorage.getItem("token")){
-  this.setState({
-    show:true
-  })
-}
-  }
-
+  };
+  componentWillReceiveProps = () => {
+    if (localStorage.getItem("priority")) {
+      this.setState({
+        show: true
+      });
+    }
+  };
 
   render() {
     return (
       <>
         <div className="header-main">
-        <div className="user">
-          {this.state.show && <p>Signed in as {this.state.name}</p>}
-        </div>
+          <div className="user">
+            {this.state.show && (
+              <div className="welcome">Welcome {this.state.name}</div>
+            )}
+          </div>
           <div className="btn-holder">
             {!this.state.show && (
               <button onClick={this.props.signup}>Sign Up</button>
