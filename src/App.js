@@ -4,10 +4,16 @@ import Signup from "./signup";
 import Signin from "./signin";
 import Table from "./table";
 import Movie from "./movie";
+import Otp from "./otp";
+import Verify from "./verify";
+import Check from "./check";
+import Mail from "./mail";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import cookie from "react-cookies";
+import Forget from "./forget";
 // const jwt = require("jsonwebtoken");
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 export default class App extends Component {
   constructor() {
     super();
@@ -61,21 +67,22 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Header
-          signup={this.triggerSignup}
-          signin={this.triggerSignin}
-          logout={this.triggerLogout}
-        />
-        {!localStorage.getItem("priority") && (
-          <div className="main">
-            {this.state.showSignup && <Signup />}
-            {this.state.showSignin && <Signin />}
-          </div>
-        )}
-        {this.state.showTable && (
-          <Table delete={this.triggerDelete} show={this.state.show} />
-        )}
-        {!this.state.showTable && localStorage.getItem("priority") && <Movie />}
+        <Router>
+          <Header />
+
+          
+            <Route exact path="/" component={Signup} />
+            
+            <div className="main">
+              <Route path="/signup" component={Signup} />
+              <Route path="/signin" component={Signin} />
+            </div>
+            <Route path="/movie" component={Movie} />
+            <Route path="/table" component={Table} />
+            <Route path="/otp" component={Otp} />
+            <Route path="/verifyOtp" component={Verify} />
+            <Route path="/checkPassword" component={Check} />
+        </Router>
       </>
     );
   }

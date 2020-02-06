@@ -45,7 +45,7 @@ export default class List extends Component {
                           <span style={{color:'black'}}>/</span>
                           <span className="rating-n">{value.vote_average}/10</span>
                       </div>
-                      <span className="overview">Overview</span>
+                      <span className="overview">Overview</span><br/>
                       <span>{value.overview}</span>
             
                     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SimpleCrypto from "simple-crypto-js";
-import cookie from 'react-cookies'
+import cookie from "react-cookies";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import "./header.css";
 // const jwt = require("jsonwebtoken");
 import jwt from "jsonwebtoken";
@@ -9,7 +10,8 @@ export default class Header extends Component {
     super(props);
     this.state = {
       show: false,
-      name: ""
+      name: "",
+      nope:false
     };
   }
   componentWillMount = () => {
@@ -17,7 +19,7 @@ export default class Header extends Component {
       var _secretKey = "goodmorningeveryone";
       var simpleCrypto = new SimpleCrypto(_secretKey);
       var token = cookie.load("token");
-      console.log("token",token)
+      console.log("token", token);
       var decipherText = simpleCrypto.decrypt(token);
       // console.log()
       this.setState({
@@ -37,10 +39,19 @@ export default class Header extends Component {
       });
     }
   };
-
+  triggerLogout = () => {
+    localStorage.removeItem("priority");
+    cookie.remove("token", { path: "/" });
+    this.setState({
+      nope:true,
+      show:false
+    })
+    // window.location.reload(false);
+  };
   render() {
     return (
       <>
+      {this.state.nope && <Redirect to="/signup"/>}
         <div className="header-main">
           <div className="user">
             {this.state.show && (
@@ -48,16 +59,16 @@ export default class Header extends Component {
             )}
           </div>
           <div className="btn-holder">
-            {!this.state.show && (
-              <button onClick={this.props.signup}>Sign Up</button>
-            )}
+            {!this.state.show && <Link to="/signup">
+              <button>Sign up</button>
+            </Link>}
 
-            {!this.state.show && (
-              <button onClick={this.props.signin}>Sign In</button>
-            )}
+            {!this.state.show && <Link to="/signin">
+              <button>Sign In</button>
+            </Link>}
 
             {this.state.show && (
-              <button onClick={this.props.logout}>Log Out</button>
+              <button onClick={this.triggerLogout}>Log Out</button>
             )}
           </div>
         </div>

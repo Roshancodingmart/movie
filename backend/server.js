@@ -7,6 +7,12 @@ const createUserRoute = require("./Route/createUserRoute");
 const signinUserRoute = require("./Route/signinUserRoute");
 const userTableRoute = require("./Route/userTableRoute");
 const deleteUserRoute = require("./Route/deleteUserRoute");
+const mailUserRoute = require("./Route/mailUserRoute");
+const smsUserRoute = require("./Route/smsUserRoute");
+const otpRoute = require("./Route/otpRoute")
+const verifyOtpRoute = require("./Route/verifyOtpRoute");
+const changePassRoute = require("./Route/changePassRoute");
+const getUserRoute = require("./Route/getUserRoute");
 
 app.use(bodyParser.json());
 app.use(
@@ -41,3 +47,9 @@ app.use("/createUser", createUserRoute);
 app.use("/signinUser",signinUserRoute);
 app.use("/userTable",userTableRoute);
 app.use("/deleteUser",deleteUserRoute);
+app.use("/mailUser",mailUserRoute);
+app.use("/smsUser",smsUserRoute);
+app.use("/otp",otpRoute);
+app.use("/verifyOtp",verifyOtpRoute);
+app.use("/changePassword",changePassRoute);
+app.use("/getUser",getUserRoute);

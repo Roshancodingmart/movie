@@ -3,20 +3,23 @@ body{
     background-color: white;
     
 }
-.header-main{
-    height: 20%;
+.header-main {
+    position: fixed;
+    margin-top: -50px;
+    height: 45px;
     width: 100%;
     background-color: blue;
     display: flex;
     justify-content: space-between;
     box-shadow: 31px -28px 9px 34px grey;
-    }
+    z-index: 10;
+}
     .btn-holder{
-    height: 50px;
-    width: 20%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px 20px 5px 20px;
+        height: auto;
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 5px;
     }
     .btn-holder button{
         height: 35px;

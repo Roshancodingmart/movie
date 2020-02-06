@@ -1,23 +1,63 @@
-.header{
-    font-size: 20px;
-    color: blue;
-    margin-top:30px;
-    font-family: sans-serif;
-    font-weight: 900;
+.header {
+  font-size: 20px;
+  color: blue;
+  margin-top: 30px;
+  font-family: sans-serif;
+  font-weight: 900;
 }
-.welcome{
-margin-top: 15px;
-    color: white;
-    font-weight: 900;
-    font-size: 18px;
-    font-family: sans-serif;
+.welcome {
+  color: white;
+  font-weight: 900;
+  font-size: 18px;
+  font-family: sans-serif;
 }
 .main {
+  display: flex;
+  justify-content: space-between;
 
-    display: flex;
-    justify-content: space-between;
+  margin: 50px;
+  /* margin-right: 50px; */
+}
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 30px;
+  font-size: 17px;
+}
 
-    margin: 50px;
-    /* margin-right: 50px; */
-  
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
   }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}

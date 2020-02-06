@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./table.css"
 import axios from "axios"
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 export default class Table extends Component {
   constructor(props){
@@ -24,9 +24,9 @@ export default class Table extends Component {
     this.handleTable()
   }
 
-  componentWillReceiveProps=()=>{
-    this.handleTable()
-  }
+  // componentWillReceiveProps=()=>{
+  //   this.handleTable()
+  // }
   deleteUser=async(event)=>{
     console.log(event.target.id)
     let user ={mail:event.target.id,

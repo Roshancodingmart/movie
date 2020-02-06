@@ -65,9 +65,9 @@ export default class Movie extends Component {
             <div className="desp">
             <span className="rating">Rating: </span>
             <span className="rating-n">{this.state.rating}/10</span>
-                <span className="duration">{this.state.runtime}hrs</span>
-            <span className="">Overview</span>
-                <span>{this.state.overview}</span>
+                <span className="duration">{this.state.runtime}hrs</span><br></br>
+            <span className="overview">Overview</span><br/>
+                <span>{this.state.overview}</span><br/>
                 {
                     this.state.genre&&
                     this.state.genre.map((value,index)=>{

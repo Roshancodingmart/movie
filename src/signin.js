@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./signin.css";
 import Forget from "./forget";
+import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 import SimpleCrypto from "simple-crypto-js";
-import cookie from 'react-cookies'
+import cookie from "react-cookies";
 const jwt = require("jsonwebtoken");
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,7 +25,9 @@ export default class Signin extends Component {
       password: "",
       no_error: false,
       no_email_error: false,
-      pass_error: false
+      pass_error: false,
+      show_table: false,
+      show_movie: false
     };
   }
   handleChange = event => {
@@ -46,7 +49,7 @@ export default class Signin extends Component {
         no_error: false
       });
     }
-    if (this.state.password.length <=0) {
+    if (this.state.password.length <= 0) {
       console.log("no password");
       await this.setState({
         pass_error: true,
@@ -69,16 +72,27 @@ export default class Signin extends Component {
 
             var simpleCrypto = new SimpleCrypto(_secretKey);
             var chiperText = simpleCrypto.encrypt(response.data.token);
-            alert(response.data.msg);
-            cookie.save('token', chiperText, { path: '/' })
-            // console.log(chiperText);
-            // alert(response.data.token);
-            // alert(jwt.decode(response.data.token).email)
-            if(jwt.decode(response.data.token).email == "roshan@admin"){
-              localStorage.setItem("priority","1")
+            if (response.data.msg=="Login Successful") {
+              var x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(() => {
+                x.className = x.className.replace("show", "");
+              }, 3000);
             }
-            else{
-              localStorage.setItem("priority","2")
+            cookie.save("token", chiperText, { path: "/" });
+
+            if (jwt.decode(response.data.token).email == "roshan@admin") {
+              localStorage.setItem("priority", "1");
+              this.setState({
+                show_table: true,
+                show_movie: false
+              });
+            } else {
+              localStorage.setItem("priority", "2");
+              this.setState({
+                show_table: false,
+                show_movie: true
+              });
             }
             window.location.reload(false);
           });
@@ -96,6 +110,9 @@ export default class Signin extends Component {
     const classes = useStyles;
     return (
       <>
+        <div id="snackbar"> Login Successful</div>
+        {this.state.show_table && <Redirect to="/table" />}
+        {this.state.show_movie && <Redirect to="/movie" />}
         <form
           className={classes.root}
           onSubmit={this.handleSignin}
@@ -129,11 +146,14 @@ export default class Signin extends Component {
             )}
           </div>
           <div className="btn">
+            {/* <Link to="/table"> */}
             <Button type="submit" variant="contained" color="primary">
               Sign In
             </Button>
+            {/* </Link> */}
           </div>
-          <Forget/>
+          <Forget />
+          {/* <Route path="/forget" component={Forget}/> */}
         </form>
       </>
     );
