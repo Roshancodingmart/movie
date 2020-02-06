@@ -23,8 +23,8 @@ const otp = (req, res) => {
           }
         );
         var msg = `${otp} is your otp`
-        const accountSid = "ACba3da62d5968c6d8a1d55a238890016e";
-        const authToken = "505550c48da7f2cad4daf3ca41b99da7";
+        const accountSid = "ACba3da6245356e";
+        const authToken = "505550c48d768f3ca41b99da7";
         const client = require("twilio")(accountSid, authToken);
         client.messages
           .create({
