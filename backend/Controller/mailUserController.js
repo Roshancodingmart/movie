@@ -6,7 +6,7 @@ const mailUser =(req,res)=>{
         service: "gmail",
         auth: {
           user: "roshandd7@gmail.com",
-          pass: "9894255827"
+          pass: "hb"
         }
       });
   
