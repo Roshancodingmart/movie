@@ -1,8 +1,12 @@
-const conn = require("../db");
+const conn = require("../db.js");
 const bcrypt = require("bcrypt");
+const date = require('date-and-time');
+
+const now = new Date();
+const time = date.format(now, 'DD/MM/YY h:mm A',true)
 const createUser = (req, res) => {
   const { mail, name, pass } = req.body;
-  
+  const no="null";
   bcrypt.hash(pass, 10, function(err, hash) {
     conn.client.query(
       `SELECT * FROM public.new WHERE email=$1`,
@@ -11,19 +15,18 @@ const createUser = (req, res) => {
         console.log(resp.rowCount);
         if (resp.rowCount <= 0) {
           conn.client.query(
-            `INSERT INTO public.new(email,name,password) VALUES ($1 , $2 , $3)`,
-            [mail, name, hash],
+            `INSERT INTO public.new(email,name,password ,added,updated,deleted) VALUES ($1 , $2 , $3 , $4 , $5 , $6)`,
+            [mail, name, hash, time, time, no],
             (error, respo) => {
               if (error) {
                 throw error;
               }
-              console.log(respo);
-              console.log("User added to database");
+
               res.send("User added to database");
             }
           );
         } else {
-          console.log("User already exists");
+
           res.send("user already exists!");
         }
       }

@@ -1,0 +1,12 @@
+node_modules/
+key/
+.gitignore/
+.vscode/
+Excel.xlsx
+report.xlsx
+
+package-lock.json
+
+package.json
+
+report.20200213.162233.7425.0.001.json
