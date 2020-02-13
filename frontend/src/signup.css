@@ -1,0 +1,74 @@
+.form-holder{
+
+    border-radius: 3px;
+}
+.form {
+    /* margin-left: 85px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 270px;
+    padding-bottom: 50px;
+    width: auto;
+    align-items: center;
+    background-color: white;
+    
+  }
+  .form-textarea{
+    width: 330px;
+  }
+  .form h3{
+    color: #75c74e;
+    font-family: sans-serif;
+  }
+  .btn{
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn input {
+    width: 100px;
+    height: 35px;
+    border: 2px solid #75c74e;
+    border-radius: 5px;
+    margin: 30px;
+    /* box-shadow: 5px 5px 5px 0px #75c74e; */
+    background-color: blue;
+    color: white;
+  }
+  .btn input:hover {
+    background-color: #75c74e;
+    border: 2px solid blue;
+    color: black;
+  }
+  .input {
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 2px solid springgreen;
+    background-color: #1d1d1d;
+    color: white;
+    /* box-shadow: 12px 11px 8px 0px #75c74e; */
+  }
+  .input:focus {
+    width: 400px;
+    border: 2px solid blue;
+  }
+  .alert{
+    height: auto;
+    color: rgb(253, 11, 11);
+    font-size: small;
+    text-align: center;
+    background-color: black;
+  }
+  .input_error{
+    color: red;
+    margin-left: 60px;
+    align-self: baseline;
+  }
+  .toast{
+    text-align: center;
+    color: green;
+  }

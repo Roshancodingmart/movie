@@ -1,0 +1,41 @@
+body{
+    margin: 0px;
+    background-color: white;
+    
+}
+.header-main {
+    position: fixed;
+    margin-top: -50px;
+    height: 45px;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 31px -28px 9px 34px grey;
+    z-index: 1;
+}
+    .btn-holder{
+        height: auto;
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 5px;
+    }
+    .btn-holder button{
+        height: 35px;
+        width: 100px;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-weight: 900;
+        font-size: 18px;
+        font-family: sans-serif;
+    }
+    .btn-holder button:hover{
+        background-color: rgb(47, 47, 218);
+    }
+.user{
+    color: white;
+    text-align: center;
+    padding: 12px 0px 0px 40px;
+}

@@ -1,0 +1,10 @@
+.reset {
+    width: 700px;
+    height: 23px;
+    font-size: larger;
+    margin-left: 23%;
+    text-align: center;
+    margin-top: 7%;
+    box-shadow: 7px 6px 16px 3px grey;
+    padding: 30px;
+}
